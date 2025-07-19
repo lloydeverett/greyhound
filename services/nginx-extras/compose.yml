@@ -1,0 +1,13 @@
+---
+services:
+  nginx:
+    container_name: nginx-extras-nginx
+    build:
+      context: '../../images/nginx-extras'
+    restart: 'unless-stopped'
+    volumes:
+      - './nginx.conf:/etc/nginx/nginx.conf:ro'
+      - './sockets:/sockets'
+      - './rw:/rw'
+    environment: {}
+

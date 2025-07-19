@@ -1,0 +1,11 @@
+---
+services:
+  nginx:
+    container_name: hello-world-nginx
+    image: 'nginx:1.29.0'
+    restart: 'unless-stopped'
+    volumes:
+      - './nginx.conf:/etc/nginx/nginx.conf:ro'
+      - './sockets:/sockets'
+    environment: {}
+

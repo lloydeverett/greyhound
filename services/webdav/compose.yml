@@ -1,0 +1,14 @@
+---
+services:
+  nginx:
+    container_name: webdav
+    image: 'dgraziotin/nginx-webdav-nononsense:latest'
+    restart: 'unless-stopped'
+    volumes:
+      - './data:/data'
+      - './config:/config'
+      - './sockets:/sockets'
+    environment: {}
+    pre_stop:
+      - command: 'rm ./sockets/*'
+
