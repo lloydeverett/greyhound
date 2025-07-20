@@ -8,5 +8,9 @@ services:
       - './data:/data'
       - './config:/config'
       - './sockets:/sockets'
-    environment: {}
+    environment:
+      WEBDAV_USERNAME: ${WEBDAV_USERNAME}
+      WEBDAV_PASSWORD: ${WEBDAV_PASSWORD}
+      PUID: ${PUID}
+      PGID: ${PGID}
 
