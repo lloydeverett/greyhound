@@ -5,6 +5,12 @@
 
 Instructions are given for Debian-based distributions. Other distros are left as an exercise for the reader.
 
+### Clone repository
+
+```bash
+git clone https://github.com/lloydeverett/greyhound
+```
+
 ### Install Caddy
 
 ```bash
@@ -20,9 +26,13 @@ sudo apt install caddy
 ### Create symlinks
 
 ```bash
-cd /etc/caddy
-ln -s /PATH/TO/GREYHOUND/greyhound/entrypoint/Caddyfile Caddyfile
-cd /opt
-ln -s /PATH/TO/GREYHOUND/greyhound greyhound
+cp /etc/caddy/Caddyfile ~/Caddyfile.bak
+sudo rm /etc/caddy/Caddyfile
+sudo ln -s $(realpath ./entrypoint/Caddyfile) /etc/caddy/Caddyfile
+sudo ln -s $(realpath .) /opt/greyhound
 ```
+
+### Caddy configuration
+
+Edit `entrypoint/Caddyfile` to your liking.
 
