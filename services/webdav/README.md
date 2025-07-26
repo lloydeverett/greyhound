@@ -11,5 +11,7 @@ chmod -R u=rwX,g=rwX,o=rwX ./rw/data
 
 Create an htpasswd file as follows:
 
+```bash
 htpasswd -bc ./htpasswd username password
+```
 
