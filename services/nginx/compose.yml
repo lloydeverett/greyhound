@@ -1,9 +1,9 @@
 ---
 services:
   nginx:
-    container_name: webdav-minimal-nginx
+    container_name: nginx-nginx
     build:
-      context: '../../images/nginx-extras'
+      context: '../../images/nginx'
     restart: 'unless-stopped'
     volumes:
       - './nginx.conf:/etc/nginx/nginx.conf:ro'

@@ -1,17 +1,14 @@
 ---
 services:
-  nginx:
+  webdav-nginx:
     container_name: webdav-nginx
-    image: 'dgraziotin/nginx-webdav-nononsense:1.28.0'
+    build:
+      context: '../../images/nginx'
     restart: 'unless-stopped'
     volumes:
-      - './data:/data:U'
-      - './config:/config:U'
-      - './sockets:/sockets:U'
-      - './cache:/var/cache:U'
-    environment:
-      WEBDAV_USERNAME: ${WEBDAV_USERNAME}
-      WEBDAV_PASSWORD: ${WEBDAV_PASSWORD}
-      PGID: 0
-      PUID: 0
+      - './nginx.conf:/etc/nginx/nginx.conf:ro'
+      - './htpasswd:/etc/nginx/.htpasswd:ro'
+      - './sockets:/sockets'
+      - './rw:/rw:U'
+    environment: {}
 

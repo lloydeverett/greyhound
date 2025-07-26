@@ -1,19 +1,15 @@
 
-## Setup
-
-### .env file
-
-Create a .env file in the following format:
+## Setup directories
 
 ```bash
-WEBDAV_USERNAME=username # replace me
-WEBDAV_PASSWORD=password # replace me
+mkdir ./rw/client_temp
+mkdir ./rw/data
+chmod -R u=rwX,g=rwX,o=rwX ./rw/data
 ```
 
-### Create data and cache directories
+## Authentication
 
-```bash
-mkdir data
-mkdir -p cache/nginx
-```
+Create an htpasswd file as follows:
+
+htpasswd -bc ./htpasswd username password
 
