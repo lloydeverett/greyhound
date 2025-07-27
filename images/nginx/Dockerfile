@@ -14,14 +14,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libssl-dev \
     libxslt1-dev \
     libxml2-dev \
-    git \
     && rm -rf /var/lib/apt/lists/*
 
 # Download and extract NGINX source
 RUN curl -fsSL http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz | tar -xz
 
 # Clone WebDAV extras module
-RUN git clone --branch v${NGINX_DAV_EXT_VERSION} https://github.com/arut/nginx-dav-ext-module.git
+COPY ./subtree/nginx-dav-ext-module ./nginx-dav-ext-module
 
 # Build and install NGINX with WebDAV extras module
 RUN cd nginx-${NGINX_VERSION} \

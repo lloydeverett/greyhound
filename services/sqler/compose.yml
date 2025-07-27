@@ -1,0 +1,26 @@
+---
+services:
+  nginx:
+    container_name: sqler-nginx
+    build:
+      context: '../../images/nginx'
+    restart: 'unless-stopped'
+    volumes:
+      - './nginx.conf:/etc/nginx/nginx.conf:ro'
+      - './sockets:/sockets'
+    environment: {}
+  sqler:
+    container_name: sqler-sqler
+    build:
+      context: '../../images/sqler'
+    volumes:
+      - './nginx.conf:/etc/nginx/nginx.conf:ro'
+      - './config:/config:ro'
+      - './db.sqlite:/db.sqlite'
+    command:
+      - './sqler'
+      - '-driver=sqlite3'
+      - '-dsn=/db.sqlite'
+      - '-rest=:80'
+      - '-config=/config/*.hcl'
+
