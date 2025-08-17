@@ -1,0 +1,23 @@
+---
+services:
+  nginx:
+    container_name: radicale-nginx
+    build:
+      context: '../../images/nginx'
+    restart: 'unless-stopped'
+    volumes:
+      - './nginx.conf:/etc/nginx/nginx.conf:ro'
+      - './sockets:/sockets'
+    ports:
+      - "5232:5232"
+    environment: {}
+  radicale:
+    image: ghcr.io/kozea/radicale:latest
+    container_name: radicale-radicale
+    volumes:
+      - './config:/config:U'
+      - './data:/var/radicale:U'
+    environment:
+      - RADICALE_CONFIG=/config/config
+    restart: unless-stopped
+

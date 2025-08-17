@@ -1,0 +1,10 @@
+
+# Auth based on reverse proxy header
+[auth]
+type = http_x_remote_user
+
+# Directory to store calendar and contact collections
+[storage]
+filesystem_folder = /var/radicale/collections
+
+
