@@ -1,4 +1,8 @@
 
+# Bind address
+[server]
+hosts = 0.0.0.0:5232, [::]:5232
+
 # Auth based on reverse proxy header
 [auth]
 type = http_x_remote_user

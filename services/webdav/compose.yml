@@ -7,7 +7,6 @@ services:
     restart: 'unless-stopped'
     volumes:
       - './nginx.conf:/etc/nginx/nginx.conf:ro'
-      - './htpasswd:/etc/nginx/.htpasswd:ro'
       - './sockets:/sockets'
       - './rw:/rw:U'
     environment: {}

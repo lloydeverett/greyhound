@@ -1,0 +1,19 @@
+
+caddy.<your domain>.com {
+  respond "Hello world from Caddy!"
+}
+
+radicale.<your domain>.com {
+  basicauth {
+      <your basic auth config>
+  }
+  reverse_proxy unix//opt/greyhound/services/radicale/sockets/nginx.sock
+}
+
+webdav.<your domain>.com {
+  basicauth {
+      <your basic auth config>
+  }
+  reverse_proxy unix//opt/greyhound/services/webdav/sockets/nginx.sock
+}
+
